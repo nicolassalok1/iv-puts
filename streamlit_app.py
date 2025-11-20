@@ -13,6 +13,15 @@ import plotly.graph_objects as go
 import streamlit as st
 import yfinance as yf
 
+# Configure matplotlib to not use LaTeX if it's available
+# This prevents "pdflatex introuvable" errors when matplotlib is installed
+try:
+    import matplotlib
+    matplotlib.rcParams['text.usetex'] = False
+except ImportError:
+    # matplotlib not installed, no configuration needed
+    pass
+
 MAX_LOOKAHEAD_YEARS = 3
 MIN_MATURITY = 0.1
 
